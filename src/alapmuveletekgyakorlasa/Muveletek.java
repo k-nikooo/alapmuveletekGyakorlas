@@ -271,18 +271,16 @@ public class Muveletek extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuOsztasActionPerformed
 
     private void btnEllenorzesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEllenorzesActionPerformed
-        int szam = Integer.parseInt(txtEredmeny.getText());
+        //int szam = Integer.parseInt(txtEredmeny.getText());
         
         if (txtEredmeny.getText().equals("")){
             lblValasz.setText("Nincs érték!");
-        }
-        
-        if (szam == 5){
+        } else if (!"5".equals(txtEredmeny.getText())){
+            lblValasz.setText("Rossz válasz!");
+            txtEredmeny.setText("");
+        } else {
             lblValasz.setText("Jó válasz!");
             btnEllenorzes.setEnabled(false);
-        } else {
-            lblValasz.setText("Rossz válasz!");
-            txtEredmeny.setText(" ");
         }
         
         lblOsztasProba.setText("Osztas: " + (ertek+1));
