@@ -2,7 +2,9 @@
 package alapmuveletekgyakorlasa;
 
 public class Muveletek extends javax.swing.JFrame {
-
+    
+    int ertek = 0;
+    
     public Muveletek() {
         initComponents();
     }
@@ -19,12 +21,10 @@ public class Muveletek extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEredmeny = new javax.swing.JTextPane();
         lblValasz = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblMuvelet = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblSzorzasKerdes = new javax.swing.JLabel();
         lblOsztasKerdes = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lblOsztasProba = new javax.swing.JLabel();
         lblEredmeny = new javax.swing.JLabel();
         lblOsszProba = new javax.swing.JLabel();
@@ -50,18 +50,31 @@ public class Muveletek extends javax.swing.JFrame {
         setTitle("Alapművelet gyakorlas");
 
         btnUjFeladat.setText("Új feladat");
+        btnUjFeladat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjFeladatActionPerformed(evt);
+            }
+        });
 
         btnMegoldas.setText("Megoldás");
+        btnMegoldas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMegoldasActionPerformed(evt);
+            }
+        });
 
-        pnlGyakorlas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlGyakorlas.setBorder(javax.swing.BorderFactory.createTitledBorder("Gyakorlas"));
 
         btnEllenorzes.setText("Ellenőrzés");
+        btnEllenorzes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEllenorzesActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(txtEredmeny);
 
         lblValasz.setText("15 nem jó!");
-
-        jLabel1.setText("Gyakorlás");
 
         lblMuvelet.setText("5 + 12 =");
 
@@ -70,29 +83,21 @@ public class Muveletek extends javax.swing.JFrame {
         pnlGyakorlasLayout.setHorizontalGroup(
             pnlGyakorlasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGyakorlasLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlGyakorlasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblValasz)
                     .addGroup(pnlGyakorlasLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGyakorlasLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlGyakorlasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValasz)
-                            .addGroup(pnlGyakorlasLayout.createSequentialGroup()
-                                .addComponent(lblMuvelet)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEllenorzes)))))
+                        .addComponent(lblMuvelet)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEllenorzes)))
                 .addContainerGap())
         );
         pnlGyakorlasLayout.setVerticalGroup(
             pnlGyakorlasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGyakorlasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlGyakorlasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEllenorzes)
@@ -102,11 +107,12 @@ public class Muveletek extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Statisztika"));
+        jPanel2.setToolTipText("");
+
         lblSzorzasKerdes.setText("Szorzás: 0");
 
         lblOsztasKerdes.setText("Osztás: 0");
-
-        jLabel4.setText("Statisztika");
 
         lblOsztasProba.setText("Osztás: 0");
 
@@ -134,7 +140,6 @@ public class Muveletek extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEredmeny)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -155,9 +160,7 @@ public class Muveletek extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOsszKerdes)
                     .addComponent(lblOsszProba))
@@ -211,6 +214,11 @@ public class Muveletek extends javax.swing.JFrame {
 
         buttonGroup1.add(mnuOsztas);
         mnuOsztas.setText("Osztás");
+        mnuOsztas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuOsztasActionPerformed(evt);
+            }
+        });
         mnuMuveletek.add(mnuOsztas);
 
         buttonGroup1.add(mnuSzorzas);
@@ -254,7 +262,40 @@ public class Muveletek extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuOsztasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOsztasActionPerformed
+        lblMuvelet.setText("10 / 2 =");
+        lblOsztasKerdes.setText("Osztas: " + (ertek+1));
+    }//GEN-LAST:event_mnuOsztasActionPerformed
+
+    private void btnEllenorzesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEllenorzesActionPerformed
+        int szam = Integer.parseInt(txtEredmeny.getText());
+        
+        if (txtEredmeny.getText().equals("")){
+            lblValasz.setText("Nincs érték!");
+        }
+        
+        if (szam == 5){
+            lblValasz.setText("Jó válasz!");
+            btnEllenorzes.setEnabled(false);
+        } else {
+            lblValasz.setText("Rossz válasz!");
+            txtEredmeny.setText(" ");
+        }
+        
+        lblOsztasProba.setText("Osztas: " + (ertek+1));
+    }//GEN-LAST:event_btnEllenorzesActionPerformed
+
+    private void btnUjFeladatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjFeladatActionPerformed
+        lblMuvelet.setText("10 / 5 =");
+        btnEllenorzes.setEnabled(true);
+    }//GEN-LAST:event_btnUjFeladatActionPerformed
+
+    private void btnMegoldasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegoldasActionPerformed
+        
+    }//GEN-LAST:event_btnMegoldasActionPerformed
 
     public static void main(String args[]) {
 
@@ -270,8 +311,6 @@ public class Muveletek extends javax.swing.JFrame {
     private javax.swing.JButton btnMegoldas;
     private javax.swing.JButton btnUjFeladat;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
